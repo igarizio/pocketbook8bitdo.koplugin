@@ -1,0 +1,23 @@
+return {
+    -- 8BitDo key mapping. Comments assume A key is looking up (like a tv remote).
+    -- Letters
+    [36] = "LPgFwd", -- Page forward [b key]
+    [35] = "LPgBack", -- Page back [x key]
+    [34] = "ShowTocviaBT", -- Show TOC [a key]
+    [23] = "BackviaBT", -- Back [y key]
+    -- Plus/Minys
+    [24] = "ToggleBookmarkviaBT", -- Toggle bookmark [+ key]
+    [49] = "WifiOffviaBT", -- Toggle bookmark [- key]
+    -- Arrows
+    [46] = "GotoPrevChapterviaBT", -- Previous chapter [left key]
+    [32] = "GotoNextChapterviaBT", -- Next chapter [right key]
+    [18] = "GoBackLinkviaBT", -- Back to previous location [down key]
+    [33] = "GoForwardLinkviaBT", -- Back to forward location [up key]
+    -- R/L keys
+    [50] = "IncreaseBrightnessviaBT", -- Brightness up [R key]
+    [37] = "DecreaseBrightnessviaBT", -- Brightness down [L key]
+    [19] = "IncreaseWarmthviaBT", -- Warmth up [R2 key]
+    [38] = "DecreaseWarmthviaBT", -- Warmth down [L2 key]
+    -- Home
+    [31] = "Home" -- Go to file manager [home key]
+}
