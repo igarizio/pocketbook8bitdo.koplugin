@@ -5,7 +5,7 @@ return {
     [35] = "LPgBack", -- Page back [x key]
     [34] = "ShowTocviaBT", -- Show TOC [a key]
     [23] = "BackviaBT", -- Back [y key]
-    -- Plus/Minys
+    -- Plus/Minus
     [24] = "ToggleBookmarkviaBT", -- Toggle bookmark [+ key]
     [49] = "WifiOffviaBT", -- Toggle bookmark [- key]
     -- Arrows
