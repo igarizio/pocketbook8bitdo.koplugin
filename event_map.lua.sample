@@ -4,10 +4,10 @@ return {
     [36] = "LPgFwd", -- Page forward [b key]
     [35] = "LPgBack", -- Page back [x key]
     [34] = "ShowTocviaBT", -- Show TOC [a key]
-    [23] = "BackviaBT", -- Back [y key]
+    [23] = "Back", -- Back [y key]
     -- Plus/Minus
     [24] = "ToggleBookmarkviaBT", -- Toggle bookmark [+ key]
-    [49] = "WifiOffviaBT", -- Toggle bookmark [- key]
+    [49] = "ToggleStatusBarviaBT", -- Toggle bookmark [- key]
     -- Arrows
     [46] = "GotoPrevChapterviaBT", -- Previous chapter [left key]
     [32] = "GotoNextChapterviaBT", -- Next chapter [right key]
