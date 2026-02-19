@@ -20,13 +20,11 @@ local Pocketbook8BitDo = InputContainer:extend{
 }
 
 function Pocketbook8BitDo:init()
-    InputContainer.init(self)
     self:registerKeyEvents()
     logger.info("Pocketbook8BitDo plugin initialized.")
 end
 
 function Pocketbook8BitDo:registerKeyEvents()
-    logger.info("Registering Pocketbook8BitDo key events")
     self.key_events.GotoNextChapterviaBT = { { "GotoNextChapterviaBT" }, event = "GotoNextChapterviaBT" }
     self.key_events.GotoPrevChapterviaBT = { { "GotoPrevChapterviaBT" }, event = "GotoPrevChapterviaBT" }
     self.key_events.DecreaseFontSizeviaBT = { { "DecreaseFontSizeviaBT" }, event = "DecreaseFontSizeviaBT" }
@@ -48,10 +46,8 @@ function Pocketbook8BitDo:registerKeyEvents()
     self.key_events.GoForwardLinkviaBT = { { "GoForwardLinkviaBT" }, event = "GoForwardLinkviaBT" }
     self.key_events.ShowTocviaBT = { { "ShowTocviaBT" }, event = "ShowTocviaBT" }
     self.key_events.BackviaBT = { { "BackviaBT" }, event = "BackviaBT" }
-    self.key_events.WifiOffviaBT = { { "WifiOffviaBT" }, event = "WifiOffviaBT" }
 end
 
--- Event handlers
 function Pocketbook8BitDo:onGotoNextChapterviaBT()
     UIManager:sendEvent(Event:new("GotoNextChapter"))
 end
@@ -130,15 +126,6 @@ end
 
 function Pocketbook8BitDo:onShowTocviaBT()
     UIManager:sendEvent(Event:new("ShowToc"))
-end
-
-function Pocketbook8BitDo:onBackviaBT()
-    UIManager:sendEvent(Event:new("CloseAllMenus"))
-end
-
-function Pocketbook8BitDo:onWifiOffviaBT()
-    local Device = require("device")
-    Device:turnOffWifi()
 end
 
 return Pocketbook8BitDo
