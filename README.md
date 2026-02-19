@@ -4,7 +4,7 @@ A super simple plugin to use the 8BitDo Bluetooth controller with Pocketbook dev
 
 ## About
 
-This plugin is based on [bluetooth.koplugin](https://github.com/koreader/koreader/tree/master/plugins/bluetooth.koplugin) and was inspired by [this MobileRead forum discussion](https://www.mobileread.com/forums/showthread.php?t=370120).
+This plugin is based on [bluetooth.koplugin](https://github.com/onatbas/bluetooth.koplugin) and was inspired by [this MobileRead forum discussion](https://www.mobileread.com/forums/showthread.php?t=370120).
 
 ## Installation
 
