@@ -18,6 +18,8 @@ return {
     [37] = "DecreaseBrightnessviaBT", -- Brightness down [L key]
     [19] = "IncreaseWarmthviaBT", -- Warmth up [R2 key]
     [38] = "DecreaseWarmthviaBT", -- Warmth down [L2 key]
-    -- Home
-    [31] = "Home" -- Go to file manager [home key]
+    -- Home/Star
+    [31] = "Home", -- Go to file manager [home key]
+	[20] = "ShowQuickMenuviaBT" -- Show quick menu [star key]
+	-- See onShowQuickMenuviaBT in main.lua for the quick menu details.
 }
