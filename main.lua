@@ -9,14 +9,16 @@ This is a simplification of bluetooth.koplugin and https://www.mobileread.com/fo
 local UIManager = require("ui/uimanager")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local Event = require("ui/event")
+local NetworkMgr = require("ui/network/manager")
+local ButtonDialog = require("ui/widget/buttondialog")
 local logger = require("logger")
 local _ = require("gettext")
 
 local BRIGHTNESS_DELTA = 5
 local WARMTH_DELTA = 1
 
-local Pocketbook8BitDo = InputContainer:extend{
-    name = "Pocketbook8BitDo",
+local Pocketbook8BitDo = InputContainer:extend {
+    name = "Pocketbook8BitDo"
 }
 
 function Pocketbook8BitDo:init()
@@ -25,27 +27,27 @@ function Pocketbook8BitDo:init()
 end
 
 function Pocketbook8BitDo:registerKeyEvents()
-    self.key_events.GotoNextChapterviaBT = { { "GotoNextChapterviaBT" }, event = "GotoNextChapterviaBT" }
-    self.key_events.GotoPrevChapterviaBT = { { "GotoPrevChapterviaBT" }, event = "GotoPrevChapterviaBT" }
-    self.key_events.DecreaseFontSizeviaBT = { { "DecreaseFontSizeviaBT" }, event = "DecreaseFontSizeviaBT" }
-    self.key_events.IncreaseFontSizeviaBT = { { "IncreaseFontSizeviaBT" }, event = "IncreaseFontSizeviaBT" }
-    self.key_events.ToggleBookmarkviaBT = { { "ToggleBookmarkviaBT" }, event = "ToggleBookmarkviaBT" }
-    self.key_events.IterateRotationviaBT = { { "IterateRotationviaBT" }, event = "IterateRotationviaBT" }
-    self.key_events.RightviaBT = { { "RightviaBT" }, event = "RightviaBT" }
-    self.key_events.LeftviaBT = { { "LeftviaBT" }, event = "LeftviaBT" }
-    self.key_events.IncreaseBrightnessviaBT = { { "IncreaseBrightnessviaBT" }, event = "IncreaseBrightnessviaBT" }
-    self.key_events.DecreaseBrightnessviaBT = { { "DecreaseBrightnessviaBT" }, event = "DecreaseBrightnessviaBT" }
-    self.key_events.IncreaseWarmthviaBT = { { "IncreaseWarmthviaBT" }, event = "IncreaseWarmthviaBT" }
-    self.key_events.DecreaseWarmthviaBT = { { "DecreaseWarmthviaBT" }, event = "DecreaseWarmthviaBT" }
-    self.key_events.NextBookmarkviaBT = { { "NextBookmarkviaBT" }, event = "NextBookmarkviaBT" }
-    self.key_events.PrevBookmarkviaBT = { { "PrevBookmarkviaBT" }, event = "PrevBookmarkviaBT" }
-    self.key_events.LastBookmarkviaBT = { { "LastBookmarkviaBT" }, event = "LastBookmarkviaBT" }
-    self.key_events.ToggleNightModeviaBT = { { "ToggleNightModeviaBT" }, event = "ToggleNightModeviaBT" }
-    self.key_events.ToggleStatusBarviaBT = { { "ToggleStatusBarviaBT" }, event = "ToggleStatusBarviaBT" }
-    self.key_events.GoBackLinkviaBT = { { "GoBackLinkviaBT" }, event = "GoBackLinkviaBT" }
-    self.key_events.GoForwardLinkviaBT = { { "GoForwardLinkviaBT" }, event = "GoForwardLinkviaBT" }
-    self.key_events.ShowTocviaBT = { { "ShowTocviaBT" }, event = "ShowTocviaBT" }
-    self.key_events.BackviaBT = { { "BackviaBT" }, event = "BackviaBT" }
+    self.key_events.GotoNextChapterviaBT = {{"GotoNextChapterviaBT"}, event = "GotoNextChapterviaBT"}
+    self.key_events.GotoPrevChapterviaBT = {{"GotoPrevChapterviaBT"}, event = "GotoPrevChapterviaBT"}
+    self.key_events.DecreaseFontSizeviaBT = {{"DecreaseFontSizeviaBT"}, event = "DecreaseFontSizeviaBT"}
+    self.key_events.IncreaseFontSizeviaBT = {{"IncreaseFontSizeviaBT"}, event = "IncreaseFontSizeviaBT"}
+    self.key_events.ToggleBookmarkviaBT = {{"ToggleBookmarkviaBT"}, event = "ToggleBookmarkviaBT"}
+    self.key_events.IterateRotationviaBT = {{"IterateRotationviaBT"}, event = "IterateRotationviaBT"}
+    self.key_events.RightviaBT = {{"RightviaBT"}, event = "RightviaBT"}
+    self.key_events.LeftviaBT = {{"LeftviaBT"}, event = "LeftviaBT"}
+    self.key_events.IncreaseBrightnessviaBT = {{"IncreaseBrightnessviaBT"}, event = "IncreaseBrightnessviaBT"}
+    self.key_events.DecreaseBrightnessviaBT = {{"DecreaseBrightnessviaBT"}, event = "DecreaseBrightnessviaBT"}
+    self.key_events.IncreaseWarmthviaBT = {{"IncreaseWarmthviaBT"}, event = "IncreaseWarmthviaBT"}
+    self.key_events.DecreaseWarmthviaBT = {{"DecreaseWarmthviaBT"}, event = "DecreaseWarmthviaBT"}
+    self.key_events.NextBookmarkviaBT = {{"NextBookmarkviaBT"}, event = "NextBookmarkviaBT"}
+    self.key_events.PrevBookmarkviaBT = {{"PrevBookmarkviaBT"}, event = "PrevBookmarkviaBT"}
+    self.key_events.LastBookmarkviaBT = {{"LastBookmarkviaBT"}, event = "LastBookmarkviaBT"}
+    self.key_events.ToggleNightModeviaBT = {{"ToggleNightModeviaBT"}, event = "ToggleNightModeviaBT"}
+    self.key_events.ToggleStatusBarviaBT = {{"ToggleStatusBarviaBT"}, event = "ToggleStatusBarviaBT"}
+    self.key_events.GoBackLinkviaBT = {{"GoBackLinkviaBT"}, event = "GoBackLinkviaBT"}
+    self.key_events.GoForwardLinkviaBT = {{"GoForwardLinkviaBT"}, event = "GoForwardLinkviaBT"}
+    self.key_events.ShowTocviaBT = {{"ShowTocviaBT"}, event = "ShowTocviaBT"}
+    self.key_events.ShowQuickMenuviaBT = {{"ShowQuickMenuviaBT"}, event = "ShowQuickMenuviaBT"}
 end
 
 function Pocketbook8BitDo:onGotoNextChapterviaBT()
@@ -126,6 +128,63 @@ end
 
 function Pocketbook8BitDo:onShowTocviaBT()
     UIManager:sendEvent(Event:new("ShowToc"))
+end
+
+function Pocketbook8BitDo:onShowQuickMenuviaBT()
+    local dialog
+
+    local wifi_on = NetworkMgr:isWifiOn()
+    local wifi_text = wifi_on and _("Turn off Wi-Fi") or _("Turn on Wi-Fi")
+    local is_in_reader = self.ui.document ~= nil
+
+    dialog =
+        ButtonDialog:new {
+        title = _("Quick Menu"),
+        buttons = {
+            {
+                {
+                    text = wifi_text,
+                    callback = function()
+                        if NetworkMgr:isWifiOn() then
+                            NetworkMgr:turnOffWifi()
+                        else
+                            NetworkMgr:turnOnWifi()
+                        end
+                        UIManager:close(dialog)
+                    end
+                }
+            },
+            {
+                {
+                    text = _("Battery Statistics"),
+                    callback = function()
+                        UIManager:close(dialog)
+                        UIManager:sendEvent(Event:new("ShowBatteryStatistics"))
+                    end
+                }
+            },
+            {
+                -- Reading progress and book stats split into two buttons (side-by-side)
+                {
+                    text = _("Reading progress"),
+                    callback = function()
+                        UIManager:close(dialog)
+                        UIManager:sendEvent(Event:new("ShowReaderProgress"))
+                    end
+                },
+                {
+                    text = _("Book Statistics"),
+                    enabled = is_in_reader, -- This button is grayed out if we aren't in reader mode
+                    callback = function()
+                        UIManager:close(dialog)
+                        UIManager:sendEvent(Event:new("ShowBookStats"))
+                    end
+                }
+            }
+        }
+    }
+
+    UIManager:show(dialog)
 end
 
 return Pocketbook8BitDo
